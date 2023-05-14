@@ -47,4 +47,8 @@ The build of a such system follows the next protocol:
   
 ## Extra
 ### Coase alignment method
-
+INS proposes a convenient advantage to be independent and auto-sufficient for navigational awareness in GPS-denied areas for instance.  
+   
+However its accuracy can be compromised, INS requires a very good initial calibration.
+The coase alignment method allows to provide the initial Euler angles for calibrating the INS.  
+A simple code is provided in the present project.
