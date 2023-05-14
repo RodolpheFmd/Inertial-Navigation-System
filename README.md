@@ -39,7 +39,11 @@ The build of a such system follows the next protocol:
 
   By knowing the time interval of the information provided by IMU we can draw the trajectory of the object.
   
- 
+  ![2D_Aircraft_Position_NED_Frame](https://github.com/RodolpheFmd/Inertial-Navigation-System/assets/92471439/8a972122-3aa5-4c33-a707-70e0ba795458)  
+    
+  
+ ![3D_Aircraft_Position_NED_Frame](https://github.com/RodolpheFmd/Inertial-Navigation-System/assets/92471439/772ba9a7-85a8-4848-82bb-cb91143d8323)
+
   
 ## Extra
 ### Coase alignment method
