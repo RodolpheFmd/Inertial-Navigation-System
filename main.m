@@ -79,26 +79,26 @@ for i= 1:length(fbx)
     q= ((1-d_theta0^2/8+d_theta0^4/384)*eye(4)+(0.5-d_theta0^2/48)*Delta_Matrix)*Quat;
 
     %DCM Update        
-    Cbn= quaternion_to_DCM(q);                                                     
-    Cnb= Cbn';                                                                 %Transposition property    
-    Pitch= asin(-Cnb(3,1));                                                    %Update of the Pitch rate of the aircraft (new THETA)
-    Roll= atan(Cnb(3,2)/Cnb(3,3));                                             %Update of the Roll rate of the aircraft (new PHI)
-    Yaw= atan(Cnb(2,1)/Cnb(1,1));                                              %Update of the Yaw rate of the aircraft (new PSI)
-    BODY= [ Roll; Pitch; Yaw];                                                 %Vector containing angles of motion of the aircraft from the NED frame
+    Cbn = quaternion_to_DCM(q);                                                     
+    Cnb = Cbn';                                                                 %Transposition property    
+    Pitch = asin(-Cnb(3,1));                                                    % Update of the Pitch rate of the aircraft (new THETA)
+    Roll = atan(Cnb(3,2)/Cnb(3,3));                                             % Update of the Roll rate of the aircraft (new PHI)
+    Yaw = atan(Cnb(2,1)/Cnb(1,1));                                              % Update of the Yaw rate of the aircraft (new PSI)
+    BODY = [ Roll; Pitch; Yaw];                                                 % Vector containing angles of motion of the aircraft from the NED frame
 
 %==========================================================================
                            %Kinematics Update
 %==========================================================================
 
-    FNED= Cbn*Fb;                                                              %Acceleration data from IMU in the NED frame (Vector with 3 components)
+    FNED= Cbn*Fb;                                                               % Acceleration data from IMU in the NED frame (Vector with 3 components)
 
-    AN = FNED(1)+(wNED(3)-wie*sin(phi))*VNED(2)-wNED(2)*VNED(3);                %Acceleration rate in the North axis (m/s²)
-    AE = FNED(2)-(wNED(3)-wie*sin(phi))*VNED(1)+(wNED(1)+wie*cos(phi))*VNED(3); %Acceleration rate in the East axis (m/s²)
-    AD = FNED(3)-(wNED(1)+wie*cos(phi))*VNED(2)+wNED(2)*VNED(1)+gvt;            %Acceleration rate in the Down axis (m/s²)
+    AN = FNED(1)+(wNED(3)-wie*sin(phi))*VNED(2)-wNED(2)*VNED(3);                % Acceleration rate in the North axis (m/s²)
+    AE = FNED(2)-(wNED(3)-wie*sin(phi))*VNED(1)+(wNED(1)+wie*cos(phi))*VNED(3); % Acceleration rate in the East axis (m/s²)
+    AD = FNED(3)-(wNED(1)+wie*cos(phi))*VNED(2)+wNED(2)*VNED(1)+gvt;            % Acceleration rate in the Down axis (m/s²)
 
-    VNED = VNED + [ AN; AE; AD]*samp;                                           %Velocity update from Acceleration rate integration (Vector with 3 components) (m/s)
-    POS = ECEF_to_cart(ECEF(1),ECEF(2),ECEF(3)) + VNED*samp;                    %Position update from Velocity rate integration (Vector with 3 components) (m)
-    ECEF = cart_to_ECEF(POS(1),POS(2),POS(3));                                  %ECEF data update (vector with the new values of: phi, lambda and h) 
+    VNED = VNED + [ AN; AE; AD]*samp;                                           % Velocity update from Acceleration rate integration (Vector with 3 components) (m/s)
+    POS = ECEF_to_cart(ECEF(1),ECEF(2),ECEF(3)) + VNED*samp;                    % Position update from Velocity rate integration (Vector with 3 components) (m)
+    ECEF = cart_to_ECEF(POS(1),POS(2),POS(3));                                  % ECEF data update (vector with the new values of: phi, lambda and h) 
     
 %==========================================================================
                             %Plot lists update
