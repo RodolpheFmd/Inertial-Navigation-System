@@ -1,6 +1,6 @@
 # Application of an inertial navigation system from IMU data
 
-**The Inertial Navigation System (INS) exploits the information from the Inertial Measurement Unit (IMU) sensors to generate comprehensive and continuous navigational data, providing position awareness without any reliance on external devices**.  
+<strong>The Inertial Navigation System (INS) exploits the information from the Inertial Measurement Unit (IMU) sensors to generate comprehensive and continuous navigational data, providing position awareness without any reliance on external devices</strong>.  
 Numerous instances of terminology misnomers can be found in the literature when comparing IMU and INS as if they were the same.  
   
 <p align="center">
